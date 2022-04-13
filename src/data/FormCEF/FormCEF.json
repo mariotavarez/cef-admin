@@ -1,0 +1,37 @@
+[
+  {
+    "name": "correo",
+    "label": "Correo",
+    "value": "",
+    "type": "email",
+    "placeholder": "Ingrese el correo electrónico",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "email"
+      }
+    ]
+  },
+  {
+    "name": "contrasena",
+    "label": "Contraseña",
+    "value": "",
+    "type": "password",
+    "placeholder": "Ingrese su contraseña",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      },
+      {
+        "type": "maxLength",
+        "value": 20
+      }
+    ]
+  }
+]
