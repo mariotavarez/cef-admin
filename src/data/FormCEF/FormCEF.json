@@ -1,21 +1,18 @@
 [
   {
-    "name": "correo",
-    "label": "Correo",
+    "name": "username",
+    "label": "Nombre de usuario",
     "value": "",
-    "type": "email",
-    "placeholder": "Ingrese el correo electrónico",
+    "type": "text",
+    "placeholder": "Ingrese el nombre de usuario",
     "validations": [
       {
         "type": "required"
-      },
-      {
-        "type": "email"
       }
     ]
   },
   {
-    "name": "contrasena",
+    "name": "password",
     "label": "Contraseña",
     "value": "",
     "type": "password",

@@ -1,7 +1,7 @@
 // Formik
 import { Form, Formik } from "formik";
 // Shared
-import { InputField, InputSelect } from "../../shared";
+import { InputField } from "../../shared";
 // Data
 import FORM_CFE_DATA from "../../../data/FormCEF/FormCEF.json";
 import DATA_HEADING from "../../../data/FormCEF/Heading.json";
@@ -17,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
 import { useEffect } from "react";
-import Header from "../../shared/header/Header";
 // Inputs Field
 const INPUTS = (
   <>
@@ -71,7 +70,7 @@ for (const input of FORM_CFE_DATA) {
 
 const validationSchema = Yup.object({ ...requiredFields });
 
-const FormCEF = () => {
+const LoginCEF = () => {
   let navigate = useNavigate();
   const { postRequest } = useFetch();
 
@@ -110,21 +109,29 @@ const FormCEF = () => {
             }
 
             try {
-              const {
-                data: { token },
-              } = await postRequest({
-                url: `registrarSolicitante.php`,
+              const { data } = await postRequest({
+                url: `admin/login.php`,
                 body: formData,
               });
 
-              if (token) {
-                localStorage.setItem("tokenCEF", token);
-                navigate("/estados-financieros/listado");
+              if (data && data === "Access granted") {
+                console.log("Acceso autorizado");
+                localStorage.setItem("username", values.username);
+                localStorage.setItem("password", values.password);
+                navigate("/admin-estados-financieros/listado");
+              } else {
+                toast.error("Usuario y/o contraseña incorrecta", {
+                  position: toast.POSITION.BOTTOM_CENTER,
+                });
+                localStorage.setItem("username", "");
+                localStorage.setItem("password", "");
               }
             } catch (error) {
-              toast.error("Por favor revise que sus datos esten correctos", {
+              toast.error("Usuario y/o contraseña incorrecta", {
                 position: toast.POSITION.BOTTOM_CENTER,
               });
+              localStorage.setItem("username", "");
+              localStorage.setItem("password", "");
             }
           }}
         >
@@ -136,7 +143,7 @@ const FormCEF = () => {
               <div className="row p-4">
                 <div className="offset-md-4 col-md-4">
                   <div className="d-grid gap-2">
-                    <Button type={"submit"} variant="success" size="lg">
+                    <Button type={"submit"} variant="outline-primary" size="lg">
                       Iniciar sesión
                     </Button>
                   </div>
@@ -150,4 +157,4 @@ const FormCEF = () => {
   );
 };
 
-export default FormCEF;
+export default LoginCEF;

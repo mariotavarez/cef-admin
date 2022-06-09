@@ -6,6 +6,7 @@ interface IProps {
 }
 
 const useFetch = () => {
+  // const base = "http://cronomonkey.com/stp-estados-financieros/api";
   const base = "https://stp.mx/estados-financieros/api";
   // Post Request
   const postRequest = async ({ url, body }: IProps) => {

@@ -1,15 +1,22 @@
+// Bootstrap 5
 import "bootstrap/dist/css/bootstrap.min.css";
-import EstadosFinancieros from "./components/features/EstadosFinancieros";
 // Components
-import FormCEF from "./components/features/FormCEF";
-import { Routes, Route, Link } from "react-router-dom";
+import LoginCEF from "./components/features/LoginCEF";
+import EstadosFinancieros from "./components/features/EstadosFinancieros";
+import Solicitantes from "./components/features/Solicitantes";
+// Router
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <Routes>
-      <Route path="estados-financieros/" element={<FormCEF />} />
+      <Route path="admin-estados-financieros/" element={<LoginCEF />} />
       <Route
-        path="estados-financieros/listado"
+        path="admin-estados-financieros/listado"
         element={<EstadosFinancieros />}
+      />
+      <Route
+        path="admin-estados-financieros/listado-solicitantes"
+        element={<Solicitantes />}
       />
     </Routes>
   );

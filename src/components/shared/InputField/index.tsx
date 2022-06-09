@@ -4,7 +4,14 @@ import { Form } from "react-bootstrap";
 interface IProps {
   label: string;
   name: string;
-  type?: "text" | "email" | "password" | "number" | "date";
+  type?:
+    | "text"
+    | "email"
+    | "password"
+    | "number"
+    | "date"
+    | "file"
+    | "checkbox";
   placeholder?: string;
   [x: string]: any;
 }
